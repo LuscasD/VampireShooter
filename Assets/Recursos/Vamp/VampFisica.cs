@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 
 public class VampFisica : MonoBehaviour
+    //// Código que controla os comportamentos do inimigo 
+    ///e tambem sua fisica e ragdoll
 {
     [SerializeField]
     private Camera _camera;
@@ -24,6 +26,7 @@ public class VampFisica : MonoBehaviour
 
     private Animator _animator;
 
+    // A posição dos ossos do personagem
     private class BoneTransform
     {
         public Vector3 Position { get; set; }
@@ -221,6 +224,7 @@ public class VampFisica : MonoBehaviour
 
     }
 
+    //o comportamento que acontece quando o personagem levanta
     private void levantandoBehavior()
     {
 
@@ -233,7 +237,7 @@ public class VampFisica : MonoBehaviour
 
     private void RagdollBehaviour()
     {
-        //Isso acontece se o inimigo sofre uma morte final
+        //Isso não acontece se o inimigo sofre uma morte final
         if (!morteFinal)
         {
             tempoParaAcordarTotal -= Time.deltaTime;
@@ -287,6 +291,7 @@ public class VampFisica : MonoBehaviour
 
     public void Impale()
     {
+        // define que sofre uma morte final e que esta no estado de Impalado
         morteFinal = true;
         estadoAtual = EnemyState.impaled;
     }
@@ -328,6 +333,7 @@ public class VampFisica : MonoBehaviour
         return estaViradoParaFrente ? ficarEmPeFrenteStateName : ficarEmPeTrazStateName;
     }
 
+    // Descobre onde esta cada bone quando o personagem for levantar
     private BoneTransform[] GetStandUpBoneTransforms()
     {
         return estaViradoParaFrente ? ficandoEmPeFrenteTransform : ficandoEmPeTrazTransform;
