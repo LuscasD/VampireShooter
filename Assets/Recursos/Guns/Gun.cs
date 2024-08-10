@@ -47,7 +47,7 @@ public class Gun : MonoBehaviour
 
         if (automatic)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 if (cooldownAtual <= 0 && municao > 0)
                 {
@@ -72,6 +72,9 @@ public class Gun : MonoBehaviour
 
             }
         }
+
+        cooldownAtual -= Time.deltaTime;
+
     }
 
 }
