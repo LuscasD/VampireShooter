@@ -66,9 +66,13 @@ public class VampFisica : MonoBehaviour
     private Transform[] bones;
     private float elapseResetBoneTime;
 
+    VampireIA iA;
+
     // Start is called before the first frame update
     void Awake()
     {
+
+        iA = GetComponent<VampireIA>();
         ragdolls = GetComponentsInChildren<Rigidbody>();
         _animator = GetComponent<Animator>();
 
@@ -128,6 +132,7 @@ public class VampFisica : MonoBehaviour
 
         rigAtingido.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
         estadoAtual = EnemyState.Ragdoll;
+        iA.perseguindoPlayer = false;
         Debug.Log("esta no raggdol state");
 
         // Pega algum numero entre o tempo de acordar maximo e o minimo
