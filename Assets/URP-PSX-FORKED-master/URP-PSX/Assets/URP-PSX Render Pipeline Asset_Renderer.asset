@@ -46,7 +46,7 @@ MonoBehaviour:
   - {fileID: 6965443398785072023}
   - {fileID: -1925210268287778290}
   - {fileID: -5677514569700259782}
-  m_RendererFeatureMap: 3a48e961946a35b1
+  m_RendererFeatureMap: 3a48e961946a35b194a6bcaa8f0bc1a9
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 4294967295
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 2147483647

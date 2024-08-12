@@ -49,7 +49,7 @@ public class Gun : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                if (cooldownAtual <= 0 && municao > 0)
+                if (cooldownAtual <= 0 && municao > 0 && isHolding ==true)
                 {
                     onGunShoot.Invoke();
                     cooldownAtual = cooldownDeTiro;
@@ -63,7 +63,7 @@ public class Gun : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (cooldownAtual <= 0)
+                if (cooldownAtual <= 0 && isHolding == true)
                 {
                     onGunShoot.Invoke();
                     cooldownAtual = cooldownDeTiro;
