@@ -10,11 +10,13 @@ public class VampireIA : MonoBehaviour
     public Transform playerTransform;
 
     public bool perseguindoPlayer = false;
+    private Animator _animator;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class VampireIA : MonoBehaviour
         if (perseguindoPlayer)
         {
             agent.destination = playerTransform.position;
+            _animator.SetBool("runing", true);
         }
         
     }
