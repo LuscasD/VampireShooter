@@ -173,11 +173,13 @@ public class VampFisica : MonoBehaviour
 
     public void AbilitarORaggdoll() 
     {
+        _animator.SetBool("runing", false);
         foreach (var rigs in ragdolls)
         {
             rigs.isKinematic = false;
         }
         _animator.enabled = false;
+        iA.perseguindoPlayer = false;
     }
     
     //Inicio do alinhamaento do personagem quando se Levanta
