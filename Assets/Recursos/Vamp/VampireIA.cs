@@ -12,6 +12,11 @@ public class VampireIA : MonoBehaviour
     public bool perseguindoPlayer = false;
     private Animator _animator;
 
+    public float maxTime = 1.0f;
+    public float maxDistance = 1.0f;
+
+    float timer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +24,22 @@ public class VampireIA : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    // Update uma vez por frame 
     void Update()
     {
         if (perseguindoPlayer)
         {
-            agent.destination = playerTransform.position;
+            // inicia o timer para seguir o player
+            timer -= Time.deltaTime;
+            if (timer < 0.0f)
+            {
+                float sqDistance = (playerTransform.position - agent.destination).magnitude;
+                if(sqDistance > maxDistance*maxDistance)
+                {
+                    agent.destination = playerTransform.position;
+                }
+                timer = maxTime;
+            }
             _animator.SetBool("runing", true);
         }
         
