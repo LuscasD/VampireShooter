@@ -9,11 +9,12 @@ public class DanoDaArma : MonoBehaviour
     public int impacto;
     public int impactoParacima;
 
-    public float distanciaDoTiro;
+    public float shootDistance;
 
     private Transform playerCamera;
 
     public GameObject bullethol;
+    public GameObject bloodVFX;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class DanoDaArma : MonoBehaviour
         Ray gunRay = new Ray(playerCamera.position, playerCamera.forward);
 
 
-        if (Physics.Raycast(gunRay, out RaycastHit hitInfo, distanciaDoTiro))
+        if (Physics.Raycast(gunRay, out RaycastHit hitInfo, shootDistance))
         {
             if (hitInfo.transform.gameObject.tag == "Inimigo")
             {
@@ -40,6 +41,9 @@ public class DanoDaArma : MonoBehaviour
 
                     Vector3 force = impacto * direcaoDoImpacto;
                     fisica.TriggerRagdoll(force, hitInfo.point);
+
+                    GameObject blood = Instantiate(bloodVFX, hitInfo.point + (hitInfo.normal * 0.025f), Quaternion.identity) as GameObject;
+                    blood.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
                 }
             }
 
