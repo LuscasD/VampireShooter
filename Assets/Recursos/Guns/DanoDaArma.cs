@@ -13,6 +13,7 @@ public class DanoDaArma : MonoBehaviour
 
     private Transform playerCamera;
 
+    // VFX
     public GameObject bullethol;
     public GameObject bloodVFX;
 
@@ -42,11 +43,13 @@ public class DanoDaArma : MonoBehaviour
                     Vector3 force = impacto * direcaoDoImpacto;
                     fisica.TriggerRagdoll(force, hitInfo.point);
 
+                    // instancia o sangue
                     GameObject blood = Instantiate(bloodVFX, hitInfo.point + (hitInfo.normal * 0.025f), Quaternion.identity) as GameObject;
                     blood.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
                 }
             }
 
+            // instancia curaco de bala
             if (hitInfo.transform.gameObject.tag == "cenario")
             {
                 GameObject decalObject = Instantiate(bullethol, hitInfo.point + (hitInfo.normal * 0.025f), Quaternion.identity) as GameObject;
