@@ -299,6 +299,7 @@ public class VampFisica : MonoBehaviour
     public void Impale()
     {
         // define que sofre uma morte final e que esta no estado de Impalado
+        //Debug.log("Chamou o estado impaldo");
         morteFinal = true;
         estadoAtual = EnemyState.impaled;
     }
