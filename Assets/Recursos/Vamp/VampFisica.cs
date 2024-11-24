@@ -43,8 +43,7 @@ public class VampFisica : MonoBehaviour
         impaled,
         ficandoDePe,
         resetarBones
-            
-          
+                   
     }
 
     private Rigidbody[] ragdolls;
@@ -132,7 +131,7 @@ public class VampFisica : MonoBehaviour
 
         rigAtingido.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
         estadoAtual = EnemyState.Ragdoll;
-        iA.perseguindoPlayer = false;
+        iA.conseguePerseguir = false;
         Debug.Log("esta no raggdol state");
 
         // Pega algum numero entre o tempo de acordar maximo e o minimo
@@ -179,7 +178,6 @@ public class VampFisica : MonoBehaviour
             rigs.isKinematic = false;
         }
         _animator.enabled = false;
-        iA.perseguindoPlayer = false;
     }
     
     //Inicio do alinhamaento do personagem quando se Levanta
