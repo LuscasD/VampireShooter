@@ -9,6 +9,8 @@ public class DanoDaArma : MonoBehaviour
     public int impacto;
     public int impactoParacima;
 
+    private float tempoQueOMouseFoiSegurado;
+
     public float shootDistance;
 
     private Transform playerCamera;
@@ -32,16 +34,17 @@ public class DanoDaArma : MonoBehaviour
         {
             if (hitInfo.transform.gameObject.tag == "Inimigo")
             {
-                VampFisica fisica = hitInfo.collider.GetComponentInParent<VampFisica>();
+                RagDollScript fisica = hitInfo.collider.GetComponentInParent<RagDollScript>();
 
                 if (fisica != null)
                 {
+                    //Calcula direção do impacto
                     Vector3 direcaoDoImpacto = fisica.transform.position - playerCamera.transform.position;
                     direcaoDoImpacto.y = impactoParacima;
                     direcaoDoImpacto.Normalize();
 
                     Vector3 force = impacto * direcaoDoImpacto;
-                    fisica.TriggerRagdoll(force, hitInfo.point);
+                    fisica.ReceberImpacto(force, hitInfo.point);
 
                     // instancia o sangue
                     GameObject blood = Instantiate(bloodVFX, hitInfo.point + (hitInfo.normal * 0.025f), Quaternion.identity) as GameObject;
@@ -49,7 +52,7 @@ public class DanoDaArma : MonoBehaviour
                 }
             }
 
-            // instancia curaco de bala
+            // instancia buraco de bala
             if (hitInfo.transform.gameObject.tag == "cenario")
             {
                 GameObject decalObject = Instantiate(bullethol, hitInfo.point + (hitInfo.normal * 0.025f), Quaternion.identity) as GameObject;

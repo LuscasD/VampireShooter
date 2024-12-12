@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BulletHole
-  m_Shader: {fileID: -6465566751694194690, guid: 805145bdd23e99a449608ba982401acc, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9811a975b6d99df45b93bb716dacc497, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -131,6 +131,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _ObjectDithering: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
