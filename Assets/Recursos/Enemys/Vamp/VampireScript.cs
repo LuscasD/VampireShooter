@@ -13,7 +13,8 @@ public class VampireScript : MonoBehaviour
     {
         SeguindoPlayer,
         Ragdoll,
-        FicandoDePe
+        FicandoDePe,
+        MortePermanente
     }
     public VampireStates estadoAtual = VampireStates.SeguindoPlayer;
 
@@ -27,6 +28,8 @@ public class VampireScript : MonoBehaviour
     public float tempoParaLevantar = 2;
 
     [SerializeField] string _standUpStateName;
+
+    public bool morreuPraSempre;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +52,9 @@ public class VampireScript : MonoBehaviour
             case VampireStates.FicandoDePe:
                 CasoFicandoDePé();
                 break;
-
+            case VampireStates.MortePermanente:
+                CasoMortePermanente();
+                break;
         }
     }
 
@@ -69,8 +74,8 @@ public class VampireScript : MonoBehaviour
     private void CasoModoRagdoll()
     {
         tempoParaLevantar -= Time.deltaTime;
-
-        if(tempoParaLevantar <= 0)
+         
+        if(tempoParaLevantar <= 0 && morreuPraSempre == false)
         {
             ragDoll.AlinharPosição();
 
@@ -78,6 +83,10 @@ public class VampireScript : MonoBehaviour
             ragDoll.DisabiltarRagdoll();
 
             _animator.Play(_standUpStateName);
+        }
+        if(morreuPraSempre == true)
+        {
+            estadoAtual = VampireStates.MortePermanente;
         }
       
     }
@@ -88,6 +97,12 @@ public class VampireScript : MonoBehaviour
         {
             estadoAtual = VampireStates.SeguindoPlayer;
         }
+    }
+
+
+    private void CasoMortePermanente()
+    {
+        
     }
 
 }

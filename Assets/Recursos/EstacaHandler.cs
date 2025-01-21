@@ -8,12 +8,12 @@ public class EstacaHandler : MonoBehaviour
     private Vector3 impaledPosition;
     private Quaternion rotationImpaled;
     private bool isImpaled;
-    private VampFisica vamFisica;
+    private VampireScript vamFisica;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
-        vamFisica = GetComponentInParent<VampFisica>();
+        vamFisica = GetComponentInParent<VampireScript>();
     }
 
     private void FixedUpdate()
@@ -34,7 +34,7 @@ public class EstacaHandler : MonoBehaviour
             impaledPosition = rigidBody.position;
             rotationImpaled = rigidBody.rotation;
             isImpaled = true;
-            vamFisica.Impale();
+            vamFisica.morreuPraSempre = true;
         }
     }
 }
