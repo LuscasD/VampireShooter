@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
     private Animator anim;
 
     private float cooldownAtual;
+    public AudioManager audioManager;
 
     private void Start()
     {
@@ -34,7 +35,9 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             isHolding = true;
-            
+            audioManager.Play("lock");
+
+
         }
         if (Input.GetMouseButtonUp(1))
         {

@@ -19,6 +19,8 @@ public class DanoDaArma : MonoBehaviour
     public GameObject bullethol;
     public GameObject bloodVFX;
 
+    public AudioManager audioManager;
+
     private void Start()
     {
         //Define a camera do player como a camera main
@@ -29,6 +31,7 @@ public class DanoDaArma : MonoBehaviour
     {
         Ray gunRay = new Ray(playerCamera.position, playerCamera.forward);
 
+        audioManager.Play("tiro");
 
         if (Physics.Raycast(gunRay, out RaycastHit hitInfo, shootDistance))
         {

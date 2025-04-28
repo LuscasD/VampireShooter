@@ -7,6 +7,7 @@ public class VampireScript : MonoBehaviour
 {
     //Outros Scripts
     private RagDollScript ragDoll;
+    public AudioManager audioManager;
 
     //Estados do vampiro
     public enum VampireStates
@@ -62,6 +63,9 @@ public class VampireScript : MonoBehaviour
     private void CasoSeguirPlayer()
     {
         _animator.SetBool("runing", true);
+
+        audioManager.Play("vampiroViuPlayer");
+
         float sqDistance = (playerTransform.position - agent.destination).magnitude;
         if (sqDistance > maxDistance * maxDistance)
         {
@@ -95,6 +99,7 @@ public class VampireScript : MonoBehaviour
     {
         if(_animator.GetCurrentAnimatorStateInfo(0).IsName(_standUpStateName) == false)
         {
+            audioManager.Play("vampiroLevanta");
             estadoAtual = VampireStates.SeguindoPlayer;
         }
     }
