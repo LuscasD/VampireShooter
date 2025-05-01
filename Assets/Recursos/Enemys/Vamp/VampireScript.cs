@@ -7,7 +7,7 @@ public class VampireScript : MonoBehaviour
 {
     //Outros Scripts
     private RagDollScript ragDoll;
-    public AudioManager audioManager;
+    private AudioManager audioManager;
 
     //Estados do vampiro
     public enum VampireStates
@@ -35,6 +35,7 @@ public class VampireScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         ragDoll = GetComponent<RagDollScript>();

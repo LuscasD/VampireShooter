@@ -17138,6 +17138,7 @@ MonoBehaviour:
   shootDistance: 10
   bullethol: {fileID: 3200671089277136610, guid: 1d6e038300b9913478484da50273d5e0, type: 3}
   bloodVFX: {fileID: 2735238173375958241, guid: c43a2b2416882f64381715aafd4632cf, type: 3}
+  audioManager: {fileID: 2086591297}
 --- !u!114 &963306922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17980,6 +17981,7 @@ MonoBehaviour:
   shootDistance: 0
   bullethol: {fileID: 0}
   bloodVFX: {fileID: 0}
+  audioManager: {fileID: 2086591297}
 --- !u!114 &1107743131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27549,26 +27551,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2086591296}
-  - component: {fileID: 2086591295}
+  - component: {fileID: 2086591297}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2086591295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086591294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f7bc9509c2117048848885601c2e06f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2086591296
 Transform:
   m_ObjectHideFlags: 0
@@ -27584,6 +27574,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2086591297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086591294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54a03b0fbd6bec4daacc84b01c36351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: lock
+    clip: {fileID: 8300000, guid: c9f12d393e838fd4888573f892a308fe, type: 3}
+    volume: 0.546
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: tiro
+    clip: {fileID: 8300000, guid: 5437b8cb866cc0a40a96b8e4e55c81d2, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
 --- !u!1001 &2094001426
 PrefabInstance:
   m_ObjectHideFlags: 0

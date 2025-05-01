@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class AudioManager : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class AudioManager : MonoBehaviour
   public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Não encontrou o som");
+        }
         s.source.Play();
     }
 }

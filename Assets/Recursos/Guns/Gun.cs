@@ -18,10 +18,11 @@ public class Gun : MonoBehaviour
     private Animator anim;
 
     private float cooldownAtual;
-    public AudioManager audioManager;
+    private AudioManager audioManager;
 
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         municao = 5;
         cooldownAtual = cooldownDeTiro;
         anim = GetComponent<Animator>();
