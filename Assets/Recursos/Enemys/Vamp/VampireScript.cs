@@ -65,7 +65,7 @@ public class VampireScript : MonoBehaviour
     {
         _animator.SetBool("runing", true);
 
-        audioManager.Play("vampiroViuPlayer");
+       // audioManager.Play("vampiroViuPlayer");
 
         float sqDistance = (playerTransform.position - agent.destination).magnitude;
         if (sqDistance > maxDistance * maxDistance)
@@ -100,7 +100,7 @@ public class VampireScript : MonoBehaviour
     {
         if(_animator.GetCurrentAnimatorStateInfo(0).IsName(_standUpStateName) == false)
         {
-            audioManager.Play("vampiroLevanta");
+           // audioManager.Play("vampiroLevanta");
             estadoAtual = VampireStates.SeguindoPlayer;
         }
     }
