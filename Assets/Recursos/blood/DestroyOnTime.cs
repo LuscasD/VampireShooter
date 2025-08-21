@@ -9,9 +9,9 @@ public class DestroyOnTime : MonoBehaviour
         StartCoroutine(destroyOnTime());
     }
 
-    IEnumerator destroyOnTime()
+     IEnumerator destroyOnTime()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(60);
         Destroy(gameObject);
     }
 }
