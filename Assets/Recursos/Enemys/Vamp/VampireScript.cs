@@ -15,7 +15,8 @@ public class VampireScript : MonoBehaviour
         SeguindoPlayer,
         Ragdoll,
         FicandoDePe,
-        MortePermanente
+        MortePermanente,
+        Idle
     }
     public VampireStates estadoAtual = VampireStates.SeguindoPlayer;
 
@@ -45,6 +46,9 @@ public class VampireScript : MonoBehaviour
     {
         switch (estadoAtual)
         {
+            case VampireStates.Idle:
+                CasoIdle();
+                break;
             case VampireStates.SeguindoPlayer:
                 CasoSeguirPlayer();
                 break;
@@ -58,6 +62,11 @@ public class VampireScript : MonoBehaviour
                 CasoMortePermanente();
                 break;
         }
+    }
+
+    private void CasoIdle()
+    {
+        // Vampiro fica parado no mesmo lugar
     }
 
     // Caso quando esta seguindo player

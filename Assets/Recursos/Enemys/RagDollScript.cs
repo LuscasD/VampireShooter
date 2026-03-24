@@ -18,8 +18,6 @@ public class RagDollScript : MonoBehaviour
     private Animator animRagDoll;
     private NavMeshAgent ragDollAgent;
 
-    public float tempoParaLevantar;
-
     private Transform ossoDaCintura;
 
 
@@ -29,7 +27,7 @@ public class RagDollScript : MonoBehaviour
     private BoneTransform[] _ragDollBoneTransform;
     private Transform[] _bones;
 
-    // Start is called before the first frame update
+
     void Awake()
     {
         animRagDoll = GetComponent<Animator>();
@@ -51,7 +49,7 @@ public class RagDollScript : MonoBehaviour
         DisabiltarRagdoll();
     }
 
- ///////////Recebe impacto em uma area e derruba com o RagDoll
+ /////////// Recebe impacto em uma area e derruba com o RagDoll
     public void ReceberImpacto(Vector3 force, Vector3 hitPoint)
     {
         HabilitarRagdoll();
@@ -59,6 +57,8 @@ public class RagDollScript : MonoBehaviour
         Rigidbody rigAtingido = rigidBodyAcertado(hitPoint);
         rigAtingido.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
 
+
+        // Tem que mudar isso para que seja um script genérico para todos os inimigos com Ragdoll
         if (vampiro)
         {
             VampireScript script = GetComponent<VampireScript>();
@@ -89,6 +89,8 @@ public class RagDollScript : MonoBehaviour
     }
 
 ///////////////////////////////////////////////////////////////
+///
+/// Controle de Ragdoll
 
     public void DisabiltarRagdoll()
     {
@@ -113,13 +115,13 @@ public class RagDollScript : MonoBehaviour
 
     }
 
-    //Alinha o modelo a nova posição depois do RagDoll
+    // Alinha o modelo a nova posição depois do RagDoll
     public void AlinharPosição()
     {
         Vector3 posiçãoOriginalDaCintura = ossoDaCintura.position;
         transform.position = ossoDaCintura.position;
 
-        //Garante que o personagem esta no chão
+        // Garante que o personagem esta no chão
        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo))
         {
             transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
