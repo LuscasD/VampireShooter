@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// Lê o Input System e repassa para os scripts do player e da arma
 public class InputManager : MonoBehaviour
 {
     private PlayerControls playerInput;
@@ -11,7 +10,12 @@ public class InputManager : MonoBehaviour
     private PlayerMovment playerMove;
     private OlharPlayer visaoDoPlayer;
 
-    // Start is called before the first frame update
+    // Lidos pela arma (Gun)
+    public bool Mirando => onFoot.Aim.IsPressed();
+    public bool AtirarPressionado => onFoot.Fire.WasPressedThisFrame();
+    public bool AtirarSegurado => onFoot.Fire.IsPressed();
+    public bool RecarregarPressionado => onFoot.Reload.WasPressedThisFrame();
+
     void Awake()
     {
         playerMove = GetComponent<PlayerMovment>();
@@ -20,23 +24,34 @@ public class InputManager : MonoBehaviour
         onFoot = playerInput.onFoot;
     }
 
-    // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
-        playerMove.Movment(onFoot.MovmentAction.ReadValue<Vector2>());
-    }
+        // Olhar primeiro, para o movimento já usar a rotação nova
+        InputAction olhar = onFoot.OlharDoPlayer;
+        bool gamepad = olhar.activeControl != null && olhar.activeControl.device is Gamepad;
+        visaoDoPlayer.FirstPerson(olhar.ReadValue<Vector2>(), gamepad);
 
-    private void LateUpdate()
-    {
-        visaoDoPlayer.FirstPerson(onFoot.OlharDoPlayer.ReadValue<Vector2>());
+        float inclinar = 0f;
+        if (onFoot.LeanLeft.IsPressed()) inclinar -= 1f;
+        if (onFoot.LeanRight.IsPressed()) inclinar += 1f;
+        visaoDoPlayer.Inclinar(inclinar);
+
+        if (onFoot.Crouch.WasPressedThisFrame()) playerMove.AlternarAgachar();
+        if (onFoot.Jump.WasPressedThisFrame()) playerMove.Pular();
+
+        playerMove.Movment(onFoot.MovmentAction.ReadValue<Vector2>(), onFoot.Sprint.IsPressed(), onFoot.Jump.IsPressed());
     }
 
     private void OnEnable()
     {
         onFoot.Enable();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     private void OnDisable()
     {
         onFoot.Disable();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

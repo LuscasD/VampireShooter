@@ -1,57 +1,98 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
+// Quando as part√≠culas de sangue batem no cen√°rio, projeta manchas (Decal Projector) na superf√≠cie.
+// O decal fica colado na superf√≠cie e √© cortado onde ela acaba, sem flutuar nem passar da borda.
 public class BloodSplaterSurface : MonoBehaviour
 {
-    public GameObject bloodDecalHorizontal; // Prefab da poÁa no ch„o
-    public GameObject bloodDecalVertical;   // Prefab da poÁa na parede
+    public DecalProjector decalDeSangue;
+    public Material[] manchasDeChao;
+    public Material[] manchasDeParede;
+
+    [Header("Tamanho (m)")]
+    public Vector2 tamanhoNoChao = new Vector2(0.7f, 1.6f);
+    public Vector2 tamanhoNaParede = new Vector2(0.6f, 1.3f);
+    // Espessura da caixa de proje√ß√£o. Fina demais e ela n√£o alcan√ßa a superf√≠cie.
+    public float profundidade = 0.5f;
+
+    [Header("Quantidade")]
+    public int maximoPorEfeito = 6;
+    public float distanciaMinima = 0.4f;
+    public static int maximoNaCena = 80;
+
+    // As mais antigas somem quando passa do limite
+    private static readonly Queue<GameObject> manchasNaCena = new Queue<GameObject>();
 
     private ParticleSystem ps;
-    private List<ParticleCollisionEvent> collisionEvents;
+    private readonly List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
+    private readonly List<Vector3> criadas = new List<Vector3>();
 
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
-        collisionEvents = new List<ParticleCollisionEvent>();
     }
 
     void OnParticleCollision(GameObject other)
     {
         int numCollisionEvents = ps.GetCollisionEvents(other, collisionEvents);
 
-        for (int i = 0; i < numCollisionEvents; i++)
+        for (int i = 0; i < numCollisionEvents && criadas.Count < maximoPorEfeito; i++)
         {
-            Vector3 pos = collisionEvents[i].intersection; // Ponto de impacto
-            Vector3 normal = collisionEvents[i].normal;    // Normal da superfÌcie
+            Vector3 pos = collisionEvents[i].intersection;
+            Vector3 normal = collisionEvents[i].normal.normalized;
+            GrudarNaSuperficie(ref pos, ref normal);
+            if (MuitoPerto(pos)) continue;
 
-            // Descobre se È mais "horizontal" ou "vertical"
-            float dot = Vector3.Dot(normal.normalized, Vector3.up);
+            // Ch√£o/teto ou parede
+            bool horizontal = Mathf.Abs(Vector3.Dot(normal, Vector3.up)) > 0.7f;
+            Criar(pos, normal, horizontal);
+            criadas.Add(pos);
+        }
+    }
 
-            GameObject prefabToSpawn;
+    // O ponto da colis√£o da part√≠cula fica afastado da superf√≠cie (raio da part√≠cula),
+    // ent√£o procura o ponto exato da superf√≠cie para o decal ficar centrado nela.
+    private void GrudarNaSuperficie(ref Vector3 pos, ref Vector3 normal)
+    {
+        if (Physics.Raycast(pos + normal * 0.3f, -normal, out RaycastHit hit, 1f, Camadas.SemPlayer, QueryTriggerInteraction.Ignore))
+        {
+            pos = hit.point;
+            normal = hit.normal;
+        }
+    }
 
-            if (Mathf.Abs(dot) > 0.7f)
-            {
-                // SuperfÌcie horizontal (ch„o/teto)
-                prefabToSpawn = bloodDecalHorizontal;
-            }
-            else
-            {
-                // SuperfÌcie vertical (parede)
-                prefabToSpawn = bloodDecalVertical;
-            }
+    private bool MuitoPerto(Vector3 pos)
+    {
+        foreach (var p in criadas)
+            if ((p - pos).sqrMagnitude < distanciaMinima * distanciaMinima) return true;
+        return false;
+    }
 
-            if (prefabToSpawn != null)
-            {
-                // Alinha a rotaÁ„o com a superfÌcie
-                Quaternion rot = Quaternion.FromToRotation(Vector3.up, normal);
+    private void Criar(Vector3 pos, Vector3 normal, bool horizontal)
+    {
+        Material[] opcoes = horizontal ? manchasDeChao : manchasDeParede;
+        if (decalDeSangue == null || opcoes == null || opcoes.Length == 0) return;
 
-                GameObject decal = Instantiate(prefabToSpawn, pos, rot);
+        Vector2 faixa = horizontal ? tamanhoNoChao : tamanhoNaParede;
+        float tamanho = Random.Range(faixa.x, faixa.y);
 
-                // Evita z-fighting
-                decal.transform.position += normal * 0.01f;
+        // O decal projeta ao longo do seu eixo Z, para dentro da superf√≠cie.
+        // No ch√£o gira livre; na parede fica "em p√©" para o sangue escorrer para baixo.
+        Quaternion rotacao = horizontal
+            ? Quaternion.AngleAxis(Random.Range(0f, 360f), normal) * Quaternion.LookRotation(-normal, Vector3.forward)
+            : Quaternion.AngleAxis(Random.Range(-12f, 12f), normal) * Quaternion.LookRotation(-normal, Vector3.up);
 
-            }
+        DecalProjector decal = Instantiate(decalDeSangue, pos, rotacao);
+        decal.material = opcoes[Random.Range(0, opcoes.Length)];
+        decal.size = new Vector3(tamanho, horizontal ? tamanho : tamanho * 1.3f, profundidade);
+        decal.pivot = Vector3.zero;
+
+        manchasNaCena.Enqueue(decal.gameObject);
+        while (manchasNaCena.Count > maximoNaCena)
+        {
+            GameObject antiga = manchasNaCena.Dequeue();
+            if (antiga != null) Destroy(antiga);
         }
     }
 }

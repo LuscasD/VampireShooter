@@ -1019,6 +1019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 0
+  velocidadeMinima: 2.5
 --- !u!1 &3596141637368248239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 0
+  velocidadeMinima: 2.5
 --- !u!1 &3602433728268922287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 1
+  velocidadeMinima: 2.5
 --- !u!1 &3893357136266266567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 1
+  velocidadeMinima: 2.5
 --- !u!1 &5369073464410570463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,6 +2135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 0
+  velocidadeMinima: 2.5
 --- !u!1 &5625166543873143872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,12 +2356,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f38defcec9121140b8906858c52d190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  estadoAtual: 2
   playerTransform: {fileID: 0}
-  maxDistance: 1
-  tempoParaLevantar: 2
-  _standUpStateName: standUp
+  alcanceDaVisao: 15
+  anguloDeVisao: 110
+  distanciaInstantanea: 1.5
+  tempoParaDetectar: 1.2
+  tempoParaEsquecer: 5
+  memoriaAoPerseguir: 1.5
+  multiplicadorAudicao: 1
+  velocidadePatrulha: 1.5
+  velocidadeInvestigando: 2.2
+  velocidadePerseguindo: 5.5
+  pontosDePatrulha: []
+  esperaNoPonto: 3
+  tempoProcurando: 6
+  alcanceDoAtaque: 1.6
+  intervaloDoAtaque: 1.5
+  aoAlcancarPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  tempoMinimoCaido: 2.5
+  tempoMaximoCaido: 8
   morreuPraSempre: 0
+  mostrarIndicador: 1
 --- !u!114 &2989819542124239826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2364,7 +2391,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89cd404a839ab0e4dbcf4e5a567d5e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vampiro: 1
+  clipDeCostas: {fileID: -203655887218126122, guid: e0994086086cc9843955bf1492b44bed, type: 3}
+  estadoDeCostas: standUp
+  clipDeBrucos: {fileID: -203655887218126122, guid: 36993d41ad44c8d41a706cfbea7b22fd, type: 3}
+  estadoDeBrucos: StandingUp
+  tempoDeTransicao: 0.5
+  velocidadeParado: 0.3
+  impactoNoOssoAtingido: 0.3
+  trancosParaSoltar: 3
 --- !u!95 &375000597030441371
 Animator:
   serializedVersion: 5
@@ -2397,10 +2431,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3
-  m_Acceleration: 40
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 720
-  m_StoppingDistance: 5
+  m_AngularSpeed: 400
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2701,6 +2735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 0
+  velocidadeMinima: 2.5
 --- !u!1 &6325442080222161538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,6 +3044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 0
+  velocidadeMinima: 2.5
 --- !u!1 &7284961611251512122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,6 +3190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 0
+  velocidadeMinima: 2.5
 --- !u!1 &7448155151470595230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,6 +3336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62b8e04f181a0348881f12a4f8eb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vital: 0
+  velocidadeMinima: 2.5
 --- !u!1 &7481463017582028565
 GameObject:
   m_ObjectHideFlags: 0

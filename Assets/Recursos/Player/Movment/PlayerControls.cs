@@ -53,6 +53,69 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""cba440c0-fc97-4297-8291-3a6e0ed8cb02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""db651df3-a8a7-420e-8b99-427e0da28cd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeanLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4011779-4553-4307-bfd9-3c58f1238e96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeanRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""309f02f2-acca-4b8e-999b-3edcdf911d25"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""dafd0de6-2d7a-4e42-930a-00e970b8d443"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4d3d3b8-0c45-4fdc-9b7b-ac76bd15aa3e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee5cf999-e930-4d91-a07c-87261594ced0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +272,171 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""OlharDoPlayer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15eede21-4402-482a-8163-3ffbfd109434"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0fc3abe-3c7c-45c2-bcf5-2eae3b8753b7"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""216f91e8-fa68-4ff1-8847-43e8310b72ce"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28cbafe7-238f-463c-b306-8c92516ebf33"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93615371-3dc9-48e0-9423-d75768d0361d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62fdb5bc-3583-44f8-9f82-2e61fb3a6c3c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b8b5786-5297-4e26-832b-4e72efc5f5d1"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f8581b1-fba1-4371-8d5a-1cff571db69f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28ec1b64-fee4-4194-bc5a-b61c49dee39d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76512238-6a42-4e2b-a983-a86f3989fadd"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75129cee-b337-4e94-8584-3c29f6f1ba71"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85cf4c09-ecb5-4ad0-82d8-7fcc621bce31"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40be250f-3e49-426b-997d-8f0a52c017b0"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf921df8-1c38-492d-b46b-61f3a543edbf"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9441c1e8-5266-4ba4-882b-0f126233b918"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +448,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_onFoot_MovmentAction = m_onFoot.FindAction("MovmentAction", throwIfNotFound: true);
         m_onFoot_Jump = m_onFoot.FindAction("Jump", throwIfNotFound: true);
         m_onFoot_OlharDoPlayer = m_onFoot.FindAction("OlharDoPlayer", throwIfNotFound: true);
+        m_onFoot_Sprint = m_onFoot.FindAction("Sprint", throwIfNotFound: true);
+        m_onFoot_Crouch = m_onFoot.FindAction("Crouch", throwIfNotFound: true);
+        m_onFoot_LeanLeft = m_onFoot.FindAction("LeanLeft", throwIfNotFound: true);
+        m_onFoot_LeanRight = m_onFoot.FindAction("LeanRight", throwIfNotFound: true);
+        m_onFoot_Aim = m_onFoot.FindAction("Aim", throwIfNotFound: true);
+        m_onFoot_Fire = m_onFoot.FindAction("Fire", throwIfNotFound: true);
+        m_onFoot_Reload = m_onFoot.FindAction("Reload", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -289,6 +524,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_onFoot_MovmentAction;
     private readonly InputAction m_onFoot_Jump;
     private readonly InputAction m_onFoot_OlharDoPlayer;
+    private readonly InputAction m_onFoot_Sprint;
+    private readonly InputAction m_onFoot_Crouch;
+    private readonly InputAction m_onFoot_LeanLeft;
+    private readonly InputAction m_onFoot_LeanRight;
+    private readonly InputAction m_onFoot_Aim;
+    private readonly InputAction m_onFoot_Fire;
+    private readonly InputAction m_onFoot_Reload;
     public struct OnFootActions
     {
         private @PlayerControls m_Wrapper;
@@ -296,6 +538,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @MovmentAction => m_Wrapper.m_onFoot_MovmentAction;
         public InputAction @Jump => m_Wrapper.m_onFoot_Jump;
         public InputAction @OlharDoPlayer => m_Wrapper.m_onFoot_OlharDoPlayer;
+        public InputAction @Sprint => m_Wrapper.m_onFoot_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_onFoot_Crouch;
+        public InputAction @LeanLeft => m_Wrapper.m_onFoot_LeanLeft;
+        public InputAction @LeanRight => m_Wrapper.m_onFoot_LeanRight;
+        public InputAction @Aim => m_Wrapper.m_onFoot_Aim;
+        public InputAction @Fire => m_Wrapper.m_onFoot_Fire;
+        public InputAction @Reload => m_Wrapper.m_onFoot_Reload;
         public InputActionMap Get() { return m_Wrapper.m_onFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -314,6 +563,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OlharDoPlayer.started += instance.OnOlharDoPlayer;
             @OlharDoPlayer.performed += instance.OnOlharDoPlayer;
             @OlharDoPlayer.canceled += instance.OnOlharDoPlayer;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
+            @LeanLeft.started += instance.OnLeanLeft;
+            @LeanLeft.performed += instance.OnLeanLeft;
+            @LeanLeft.canceled += instance.OnLeanLeft;
+            @LeanRight.started += instance.OnLeanRight;
+            @LeanRight.performed += instance.OnLeanRight;
+            @LeanRight.canceled += instance.OnLeanRight;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
+            @Fire.started += instance.OnFire;
+            @Fire.performed += instance.OnFire;
+            @Fire.canceled += instance.OnFire;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -327,6 +597,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OlharDoPlayer.started -= instance.OnOlharDoPlayer;
             @OlharDoPlayer.performed -= instance.OnOlharDoPlayer;
             @OlharDoPlayer.canceled -= instance.OnOlharDoPlayer;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
+            @LeanLeft.started -= instance.OnLeanLeft;
+            @LeanLeft.performed -= instance.OnLeanLeft;
+            @LeanLeft.canceled -= instance.OnLeanLeft;
+            @LeanRight.started -= instance.OnLeanRight;
+            @LeanRight.performed -= instance.OnLeanRight;
+            @LeanRight.canceled -= instance.OnLeanRight;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
+            @Fire.started -= instance.OnFire;
+            @Fire.performed -= instance.OnFire;
+            @Fire.canceled -= instance.OnFire;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -349,5 +640,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMovmentAction(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnOlharDoPlayer(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
+        void OnLeanLeft(InputAction.CallbackContext context);
+        void OnLeanRight(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

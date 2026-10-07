@@ -9804,8 +9804,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829820a03cbc6c142bdf53e98fda5aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodDecalHorizontal: {fileID: 2420680498920984327, guid: 46ec065f9876b8f479dfc079ed81ec6c, type: 3}
-  bloodDecalVertical: {fileID: 2420680498920984327, guid: 71b5515417bb357478a2c0490b1d90f8, type: 3}
+  decalDeSangue: {fileID: 1857986214893784720, guid: 90766b14b8fe0e348ae5e905ee54cbe9, type: 3}
+  manchasDeChao:
+  - {fileID: 2100000, guid: 269f6f2a8a867ac45b55c86ae364e929, type: 2}
+  - {fileID: 2100000, guid: b1205e21fd026f64c9bf304f00e4bb24, type: 2}
+  manchasDeParede:
+  - {fileID: 2100000, guid: 6f65b287d6fdaa447b092b618987e238, type: 2}
+  - {fileID: 2100000, guid: 6f65b287d6fdaa447b092b618987e238, type: 2}
+  - {fileID: 2100000, guid: b1205e21fd026f64c9bf304f00e4bb24, type: 2}
+  tamanhoNoChao: {x: 0.7, y: 1.6}
+  tamanhoNaParede: {x: 0.6, y: 1.3}
+  maximoPorEfeito: 4
+  distanciaMinima: 0.4
 --- !u!1 &8604810256937288084
 GameObject:
   m_ObjectHideFlags: 0
@@ -14721,5 +14731,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829820a03cbc6c142bdf53e98fda5aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodDecalHorizontal: {fileID: 2420680498920984327, guid: 46ec065f9876b8f479dfc079ed81ec6c, type: 3}
-  bloodDecalVertical: {fileID: 2420680498920984327, guid: 71b5515417bb357478a2c0490b1d90f8, type: 3}
+  decalDeSangue: {fileID: 1857986214893784720, guid: 90766b14b8fe0e348ae5e905ee54cbe9, type: 3}
+  manchasDeChao:
+  - {fileID: 2100000, guid: 269f6f2a8a867ac45b55c86ae364e929, type: 2}
+  - {fileID: 2100000, guid: b1205e21fd026f64c9bf304f00e4bb24, type: 2}
+  manchasDeParede:
+  - {fileID: 2100000, guid: 6f65b287d6fdaa447b092b618987e238, type: 2}
+  - {fileID: 2100000, guid: 6f65b287d6fdaa447b092b618987e238, type: 2}
+  - {fileID: 2100000, guid: b1205e21fd026f64c9bf304f00e4bb24, type: 2}
+  tamanhoNoChao: {x: 0.7, y: 1.6}
+  tamanhoNaParede: {x: 0.6, y: 1.3}
+  maximoPorEfeito: 3
+  distanciaMinima: 0.4
