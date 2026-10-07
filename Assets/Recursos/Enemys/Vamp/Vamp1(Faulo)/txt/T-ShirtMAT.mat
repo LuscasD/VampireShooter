@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: T-ShirtMAT
-  m_Shader: {fileID: -6465566751694194690, guid: 2b3b7d0b179748b449e12721ea4fcfa6, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8ef3749d5e8fe374aa55d27cd15ae46f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -111,6 +111,7 @@ Material:
     - Vector1_B2CC132F: 16
     - Vector1_B9994903: 11
     - Vector1_E8746023: 16
+    - _Affine: 0.4
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -128,6 +129,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Jitter: 220
+    - _LightSteps: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

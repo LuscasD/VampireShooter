@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Events;
 
 // IA do vampiro no estilo dos guardas de Thief / Dishonored:
@@ -63,6 +64,14 @@ public class VampireScript : MonoBehaviour
     public float tempoMaximoCaido = 8f;
     public bool morreuPraSempre;
 
+    [Header("Olhar com a cabeça (Animation Rigging)")]
+    public Rig rigOlhar;
+    public Transform alvoOlhar;
+    [Tooltip("Quão rápido a cabeça começa/para de seguir o alvo")]
+    public float velocidadeVirarCabeca = 3f;
+    [Tooltip("Quão rápido o ponto de olhar acompanha o player")]
+    public float suavidadeOlhar = 8f;
+
     [Header("Debug")]
     public bool mostrarIndicador = true;
 
@@ -84,6 +93,7 @@ public class VampireScript : MonoBehaviour
     private Vector3 pontoInvestigar;
 
     private TextMesh indicador;
+    private Transform cabecaDoPlayer;
 
     void Awake()
     {
@@ -94,6 +104,8 @@ public class VampireScript : MonoBehaviour
 
         if (playerTransform == null) playerTransform = FindObjectOfType<PlayerMovment>().transform;
         playerController = playerTransform.GetComponent<CharacterController>();
+        Camera cameraDoPlayer = playerTransform.GetComponentInChildren<Camera>();
+        cabecaDoPlayer = cameraDoPlayer != null ? cameraDoPlayer.transform : playerTransform;
         playerMovimento = playerTransform.GetComponent<PlayerMovment>();
 
         mascaraVisao = ~LayerMask.GetMask(LayerMask.LayerToName(gameObject.layer), "gun", "Ignore Raycast");
@@ -134,6 +146,35 @@ public class VampireScript : MonoBehaviour
 
         if (agent.enabled)
             _animator.SetFloat("velocidade", agent.velocity.magnitude, 0.1f, Time.deltaTime);
+
+        AtualizarOlhar();
+    }
+
+    // Vira a cabeça para o player quando está vendo ele (ou para onde o viu, quando desconfiado)
+    private void AtualizarOlhar()
+    {
+        if (rigOlhar == null || alvoOlhar == null) return;
+
+        bool ativo = EstadoAtual < VampireStates.Ragdoll;
+        bool temAlvo = false;
+        Vector3 ponto = Vector3.zero;
+        if (ativo && VendoPlayer)
+        {
+            ponto = cabecaDoPlayer.position;
+            temAlvo = true;
+        }
+        else if (EstadoAtual == VampireStates.Suspeito)
+        {
+            ponto = ultimaPosicaoConhecida + Vector3.up;
+            temAlvo = true;
+        }
+
+        if (temAlvo)
+        {
+            // Se a cabeça estava solta, começa direto no alvo para não "varrer" o cenário
+            alvoOlhar.position = rigOlhar.weight <= 0.01f ? ponto : Vector3.Lerp(alvoOlhar.position, ponto, suavidadeOlhar * Time.deltaTime);
+        }
+        rigOlhar.weight = Mathf.MoveTowards(rigOlhar.weight, temAlvo ? 1f : 0f, velocidadeVirarCabeca * Time.deltaTime);
     }
 
     private void LateUpdate()
@@ -273,6 +314,7 @@ public class VampireScript : MonoBehaviour
     private void AoCair()
     {
         VendoPlayer = false;
+        if (rigOlhar != null) rigOlhar.weight = 0f;
         Deteccao = 1f;
         MudarEstado(VampireStates.Ragdoll);
     }

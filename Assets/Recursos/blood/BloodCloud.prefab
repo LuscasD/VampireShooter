@@ -8759,7 +8759,7 @@ ParticleSystem:
     radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 256
+      m_Bits: 257
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -9814,6 +9814,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b1205e21fd026f64c9bf304f00e4bb24, type: 2}
   tamanhoNoChao: {x: 0.7, y: 1.6}
   tamanhoNaParede: {x: 0.6, y: 1.3}
+  profundidade: 0.5
   maximoPorEfeito: 4
   distanciaMinima: 0.4
 --- !u!1 &8604810256937288084
@@ -13676,7 +13677,7 @@ ParticleSystem:
     radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 256
+      m_Bits: 257
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -14741,5 +14742,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b1205e21fd026f64c9bf304f00e4bb24, type: 2}
   tamanhoNoChao: {x: 0.7, y: 1.6}
   tamanhoNaParede: {x: 0.6, y: 1.3}
+  profundidade: 0.5
   maximoPorEfeito: 3
   distanciaMinima: 0.4
