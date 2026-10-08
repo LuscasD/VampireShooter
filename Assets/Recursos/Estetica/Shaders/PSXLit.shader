@@ -42,7 +42,8 @@ Shader "VampireShooter/PSX Lit"
     // Prende o vértice numa grade de baixa resolução na tela (o "tremido" do PS1)
     float4 TremerVertice(float4 positionCS)
     {
-        if (_Jitter <= 0) return positionCS;
+        // Vértices atrás ou colados na câmera não entram na grade (eles fariam a peça inteira chacoalhar)
+        if (_Jitter <= 0 || positionCS.w < 1.0) return positionCS;
         float2 grade = float2(_Jitter * (_ScreenParams.x / _ScreenParams.y), _Jitter) * 0.5;
         float2 ndc = positionCS.xy / positionCS.w;
         ndc = round(ndc * grade) / grade;

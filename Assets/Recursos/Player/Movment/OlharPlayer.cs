@@ -19,8 +19,8 @@ public class OlharPlayer : MonoBehaviour
     public float velocidadeInclinar = 8f;
 
     [Header("Balanço da cabeça")]
-    public float bobVertical = 0.05f;
-    public float bobHorizontal = 0.03f;
+    public float bobVertical = 0.025f;
+    public float bobHorizontal = 0.012f;
     public float comprimentoDoPasso = 1.6f;
 
     [Header("Campo de visão")]

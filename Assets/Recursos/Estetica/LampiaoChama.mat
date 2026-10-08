@@ -37,7 +37,7 @@ Material:
     - _AlphaClip: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Jitter: 220
+    - _Jitter: 160
     - _LightSteps: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 0.7, b: 0.35, a: 1}

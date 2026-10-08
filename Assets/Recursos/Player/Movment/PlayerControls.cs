@@ -116,6 +116,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Arremessar"",
+                    ""type"": ""Button"",
+                    ""id"": ""de8af016-489a-406c-b738-d27e526db60a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -437,6 +446,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5949a85e-d14f-4ed4-b796-1b2935f8b006"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arremessar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d938086-6585-4286-8c2e-e91c43b1e635"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Arremessar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -455,6 +486,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_onFoot_Aim = m_onFoot.FindAction("Aim", throwIfNotFound: true);
         m_onFoot_Fire = m_onFoot.FindAction("Fire", throwIfNotFound: true);
         m_onFoot_Reload = m_onFoot.FindAction("Reload", throwIfNotFound: true);
+        m_onFoot_Arremessar = m_onFoot.FindAction("Arremessar", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -531,6 +563,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_onFoot_Aim;
     private readonly InputAction m_onFoot_Fire;
     private readonly InputAction m_onFoot_Reload;
+    private readonly InputAction m_onFoot_Arremessar;
     public struct OnFootActions
     {
         private @PlayerControls m_Wrapper;
@@ -545,6 +578,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_onFoot_Aim;
         public InputAction @Fire => m_Wrapper.m_onFoot_Fire;
         public InputAction @Reload => m_Wrapper.m_onFoot_Reload;
+        public InputAction @Arremessar => m_Wrapper.m_onFoot_Arremessar;
         public InputActionMap Get() { return m_Wrapper.m_onFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -584,6 +618,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @Arremessar.started += instance.OnArremessar;
+            @Arremessar.performed += instance.OnArremessar;
+            @Arremessar.canceled += instance.OnArremessar;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -618,6 +655,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @Arremessar.started -= instance.OnArremessar;
+            @Arremessar.performed -= instance.OnArremessar;
+            @Arremessar.canceled -= instance.OnArremessar;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -647,5 +687,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnArremessar(InputAction.CallbackContext context);
     }
 }

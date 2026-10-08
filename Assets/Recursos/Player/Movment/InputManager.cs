@@ -16,6 +16,10 @@ public class InputManager : MonoBehaviour
     public bool AtirarSegurado => onFoot.Fire.IsPressed();
     public bool RecarregarPressionado => onFoot.Reload.WasPressedThisFrame();
 
+    // Lidos pelo arremesso de água benta (segura para mirar, solta para jogar)
+    public bool ArremessarSegurado => onFoot.Arremessar.IsPressed();
+    public bool ArremessarSolto => onFoot.Arremessar.WasReleasedThisFrame();
+
     void Awake()
     {
         playerMove = GetComponent<PlayerMovment>();
